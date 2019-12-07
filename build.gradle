@@ -1,16 +1,54 @@
 plugins {
     id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'checkstyle'
 }
 
-group 'org.example'
+group 'com.smn.dsalgos'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    implementation "org.slf4j:slf4j-api:1.7.29"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.29'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    dependencies {
+        testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+        testImplementation "org.assertj:assertj-core:${assertjVersion}"
+    }
+}
+
+checkstyle {
+    toolVersion = "${checkstyleVersion}"
+    configDir = "${rootProject.projectDir}/style" as File
+    configFile = "${rootProject.projectDir}/style/checkstyle.xml" as File
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
 }

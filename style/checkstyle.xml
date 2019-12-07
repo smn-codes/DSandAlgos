@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module name = "Checker">
+    <property name = "localeLanguage" value = "en"/>
+
+    <module name = "FileTabCharacter"/>
+
+    <module name = "SuppressWarningsFilter"/>
+
+    <module name = "TreeWalker">
+        <module name = "SuppressWarningsHolder"/>
+
+        <!-- code cleanup -->
+        <module name = "MissingOverride"/>
+        <module name = "ExplicitInitialization"/>
+
+        <module name = "UnusedImports">
+            <property name = "processJavadoc" value = "true"/>
+        </module>
+        <module name = "AnnotationLocation"/>
+        <module name = "RedundantImport"/>
+        <module name = "RedundantModifier"/>
+        <module name = "IllegalImport"/>
+        <module name = "EqualsHashCode"/>
+        <module name = "SimplifyBooleanExpression"/>
+        <module name = "OneStatementPerLine"/>
+        <module name = "SimplifyBooleanReturn"/>
+        <module name = "EmptyCatchBlock"/>
+        <module name = "HiddenField">
+            <property name = "ignoreConstructorParameter" value = "true"/>
+            <property name = "ignoreSetter" value = "true"/>
+        </module>
+        <module name="IllegalCatch">
+            <property name="severity" value="error"/>
+            <property name="illegalClassNames" value="java.lang.RuntimeException"/>
+        </module>
+        <module name="IllegalCatch">
+            <property name="severity" value="warning"/>
+            <property name="illegalClassNames" value="java.lang.Exception"/>
+        </module>
+        <module name = "IllegalThrows"/>
+        <module name = "StringLiteralEquality"/>
+
+        <!-- style -->
+        <module name = "CatchParameterName"/>
+        <module name = "AbbreviationAsWordInName">
+            <property name = "ignoreStatic" value = "false"/>
+            <property name = "allowedAbbreviationLength" value = "1"/>
+        </module>
+        <module name = "AbstractClassName">
+            <property name="format" value="^(Abstract.+|.+Util|.+Utils)$"/>
+        </module>
+        <module name = "DefaultComesLast"/>
+        <module name = "EmptyStatement"/>
+        <module name = "EmptyLineSeparator">
+            <property name = "allowNoEmptyLineBetweenFields" value = "true"/>
+        </module>
+        <module name = "ArrayTypeStyle"/>
+        <module name = "UpperEll"/>
+        <module name = "LeftCurly"/>
+        <module name = "RightCurly">
+            <property name = "option" value = "alone"/>
+        </module>
+        <module name = "ConstantName"/>
+        <module name = "LocalVariableName"/>
+        <module name = "LocalFinalVariableName"/>
+        <module name = "MemberName"/>
+        <module name = "MethodName"/>
+        <module name = "ClassTypeParameterName">
+            <property name = "format" value = "^[A-Z][a-zA-Z0-9]*$$"/>
+        </module>
+        <module name = "MethodTypeParameterName">
+            <property name = "format" value = "^[A-Z][a-zA-Z0-9]*$$"/>
+        </module>
+        <module name = "InterfaceTypeParameterName">
+            <property name = "format" value = "^[A-Z][a-zA-Z0-9]*$$"/>
+        </module>
+        <module name = "PackageName"/>
+        <module name = "PackageAnnotation"/>
+        <module name = "ParameterName"/>
+        <module name = "StaticVariableName"/>
+        <module name = "TypeName"/>
+        <module name = "AvoidStarImport"/>
+        <module name = "CommentsIndentation"/>
+        <module name = "NeedBraces"/>
+        <module name = "MagicNumber"/>
+        <module name = "MultipleVariableDeclarations"/>
+        <module name = "MutableException"/>
+
+        <!-- dependencies
+        <module name="ImportControl">
+          <property name="file" value="${importControlFile}"/>
+        </module>
+     -->
+        <!-- whitespace -->
+        <module name = "GenericWhitespace"/>
+        <module name = "NoWhitespaceBefore"/>
+        <module name = "WhitespaceAfter"/>
+        <module name = "NoWhitespaceAfter">
+            <property name="tokens" value="DOT,INC,DEC,UNARY_MINUS,UNARY_PLUS,BNOT,LNOT,ARRAY_DECLARATOR,INDEX_OP"/>
+        </module>
+        <module name = "WhitespaceAround">
+            <property name = "allowEmptyConstructors" value = "true"/>
+            <property name = "allowEmptyMethods" value = "true"/>
+        </module>
+        <module name = "MethodParamPad"/>
+        <module name = "ParenPad"/>
+        <module name = "TypecastParenPad"/>
+
+        <!-- locale-sensitive methods should specify locale -->
+        <module name = "Regexp">
+            <property name = "format" value = "\.to(Lower|Upper)Case\(\)"/>
+            <property name = "illegalPattern" value = "true"/>
+            <property name = "ignoreComments" value = "true"/>
+        </module>
+
+        <!-- code quality -->
+        <module name = "MethodLength"/>
+        <module name = "ParameterNumber">
+            <property name = "max" value = "20"/>
+        </module>
+        <module name = "ClassDataAbstractionCoupling">
+            <!-- default is 7 -->
+            <property name = "max" value = "26"/>
+        </module>
+        <module name = "BooleanExpressionComplexity">
+            <!-- default is 3 -->
+            <property name = "max" value = "5"/>
+        </module>
+
+        <module name = "ClassFanOutComplexity">
+            <!-- default is 20 -->
+            <property name = "max" value = "40"/>
+        </module>
+        <module name = "CyclomaticComplexity">
+            <!-- default is 10-->
+            <property name = "max" value = "16"/>
+        </module>
+        <module name = "JavaNCSS">
+            <!-- default is 50 -->
+            <property name = "methodMaximum" value = "150"/>
+        </module>
+        <module name = "NPathComplexity">
+            <!-- default is 200 -->
+            <property name = "max" value = "500"/>
+        </module>
+    </module>
+</module>
